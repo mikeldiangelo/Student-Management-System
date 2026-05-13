@@ -1,0 +1,13 @@
+<?php
+//ADD THE REQUIRE ONCE VARIABLE TO ADD TWO FILES TOGETHER
+require_once "Student.php";
+//CREATING A CLASS OF ADMIN AND LINK PROPERTIES FROM CLASS OF STUDENT TO ADMIN CLASS
+class Admin extends Student {
+    //CREATING A METHOD THAT ALLOWS ADMIN TO ADD STUDENT USING THE INFORMATION IN THE STUDENT CLASS
+    public function addStudent($name, $email, $course) {
+        //USING THE PREVIOUS METHOD IN THE STUDENT CLASS TO ALLOW ADMIN ADD STUDENT CAUSE ITS INHERITING THE STUDENT CLASS
+        return $this->register_Student($name, $email, $course);
+    }  
+} 
+
+?>

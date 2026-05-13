@@ -1,0 +1,74 @@
+<!-- Cross-referencing my written SQL -->
+
+# STUDENT MANAGEMENT SYSTEM
+
+## DATABASE SETUP 
+
+### CREATING DATABASE IN MY SQL
+
+```sql 
+CREATE DATABASE student_db;
+```
+### USE DATABASE
+
+```sql
+USE student_db;
+```
+### CREATING TABLES UNDER DATABASE NAME 
+
+### CREATE STUDENT TABLE
+
+```sql
+CREATE TABLE students (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+email VARCHAR(75) NOT NULL UNIQUE,
+course VARCHAR(50) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+### CREATE ADMIN TABLE
+
+```sql
+CREATE TABLE admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+### Why PRIVATE PROPERTIES CANNOT BE ACCESSED DIRECTLY
+
+In object-oriented programming(OOP), private properties are only accessible **within the class**(i.e inside the same class they're defined in). 
+This is done to protect the data from being modified or accessed directly from outside the class, ensuring encapsulation(i.e hiding details inside an object to avoid injection and displaying it through specific process). 
+To safely access or modify these properties, public methods (getters getname() and setters setname()) must be used. 
+This approach prevents unintended changes and helps maintain the integrity of the object.
+
+### EXAMPLE OF USING CLASS WITH A PROPERTY OF PRIVATE
+
+```php
+class Student {
+    private $name;
+
+    public function __construct($name) {
+        $this->name = $name; // allowed inside the class
+    }
+
+    // Controlled access
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setName($name) {
+        if(!empty($name)) {
+            $this->name = $name;
+        }
+    }
+}
+
+$student = new Student("Mikel");
+// $student->name; // ❌ Error, private property
+echo $student->getName(); // ✅ Access through getter
+```
